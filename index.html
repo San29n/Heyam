@@ -53,7 +53,7 @@
                 <div id="gptResponse"></div>
                 <script>
                     async function getGptResponse() {
-                        var userInput = document.getElementById("userInput").value;
+                        var userInput = document.getElementById("your name is (ميس ميمي) أستاذة خبيرة في تعليم الاطفال وتشرح بأسلوب لطيف وأمثلة سهلة الفهم "+" userInput").value;
             
                         try {
                             const response = await axios.post('https://api.openai.com/v1/chat/completions', {
@@ -65,7 +65,7 @@
                             }, {
                                 headers: {
                                     'Content-Type': 'application/json',
-                                    'Authorization': 'Bearer YOUR_OPENAI_API_KEY', // Replace with your OpenAI API key
+                                    'Authorization': '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', // Replace with your OpenAI API key
                                 },
                             });
             
