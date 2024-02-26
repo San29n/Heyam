@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="mobile" style="--color-disco: hsl(123.43298318216297, 100%, 52%); cursor: move;">
+<div id="in-page-channel-node-id" data-channel-name="in_page_channel_9Kpacn"></div>
+<head>
+    <meta charset="UTF-8">
+    <title>مس ميمي</title>
+</head>
+
+<body>
+    <link href="css/index.3dd7bff9.59dadd.css" rel="stylesheet">
+    <div class="header">
+    <div class="header__inner wrap">
+            <a class="js-logo logo" href="#!">هيام</a>
+            <div class="header__right">   </div>
+        </div>
+    </div>
+    <div class="cats js-scroll-container" style="cursor: move;">
+        <div class="cat cat--1 js-cat" style="transform: translate(0px, -4337.32px);">
+            <div class="cat__title cat__title-1"><span>كل شيء</span> <span class="_white">راح يكون تمام</span></div>
+            <div class="cat__instructions"><span>انزل تحت</span><span>انا موجودة هنا عشان </span> <span>اساعدك </span></div>
+            <div class="cat__graphics">
+            <div class="cat__img">
+                <div class="cat__zone js-cat-zone"></div>
+            </div>
+            <div class="cat__parallax cat__parallax-0 js-cat-parallax-0" style="transform: translate(0px, -433.732px);">
+                <div class="cat__parallax-item cat__parallax-item--tablet"></div>
+                <div class="cat__parallax-item cat__parallax-item--balloon-3"></div>
+            </div>
+            <div class="cat__parallax cat__parallax-1 js-cat-parallax-1" style="transform: translate(0px, -1084.33px);">
+                <div class="cat__parallax-item cat__parallax-item--pen"></div>
+                <div class="cat__parallax-item cat__parallax-item--plane"></div>
+                <div class="cat__parallax-item cat__parallax-item--glasses"></div>
+                <div class="cat__parallax-item cat__parallax-item--pineapple"></div>
+                <div class="cat__parallax-item cat__parallax-item--burger-2"></div>
+            </div>
+            <div class="cat__parallax cat__parallax-2 js-cat-parallax-2" style="transform: translate(0px, -2602.39px);">
+                <div class="cat__parallax-item cat__parallax-item--balloon"></div>
+                <div class="cat__parallax-item cat__parallax-item--coffee"></div>
+                <div class="cat__parallax-item cat__parallax-item--burger"></div>
+                <div class="cat__parallax-item cat__parallax-item--board"></div>
+                <div class="cat__parallax-item cat__parallax-item--eye"></div>
+                <div class="cat__parallax-item cat__parallax-item--coffee-2"></div>
+                <div class="cat__parallax-item cat__parallax-item--balloon-2"></div>
+            </div>
+            </div>
+            <div class="heyam">
+                <h1>أهلاا بالمياو </h1>
+                <label for="userName"> ايش اسمك اليوم؟</label>
+                <input type="text" id="userName" name="userName"><br>
+                <label for="userInput">اكتب لي سؤالك هنا</label>
+                <input type="text" id="userInput" name="userInput"><br>
+                <button onclick="getGptResponse()">اشرحيلي</button>
+                <div id="gptResponse"></div>
+                <script>
+                    async function getGptResponse() {
+                        var userInput = document.getElementById("userInput").value;
+            
+                        try {
+                            const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+                                model: 'text-davinci-002',
+                                messages: [
+                                    { role: 'system', content: 'You are a helpful assistant.' },
+                                    { role: 'user', content: userInput },
+                                ],
+                            }, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': 'Bearer YOUR_OPENAI_API_KEY', // Replace with your OpenAI API key
+                                },
+                            });
+            
+                            document.getElementById("gptResponse").innerHTML = response.data.choices[0].message.content;
+                        } catch (error) {
+                            console.error('Error calling OpenAI API:', error.response.status, error.response.statusText);
+                        }
+                    }
+                </script>
+            </div>
+            <div class="cat__footer">هيام — 2022 ©</div>
+        </div>
+    </div>
+</body>
+</html>
